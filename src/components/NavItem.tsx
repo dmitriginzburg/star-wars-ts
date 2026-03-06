@@ -1,14 +1,14 @@
 import {SWContext} from "../utils/context.ts";
 import {useContext} from "react";
+import Button from "./ui/Button.tsx";
 
-interface NavItemProps {
-    itemTitle: string;
-}
-const NavItem = ({itemTitle}:NavItemProps) => {
-    const {setPage} = useContext(SWContext)!;
+const NavItem = ({itemTitle}: {itemTitle: string}) => {
+    const {changePage} = useContext(SWContext);
     return (
-        <div onClick={() => setPage(itemTitle)}
-             className={`bg-danger rounded-md px-3 border cursor-pointer hover:bg-red-500 hover:text-white`}>{itemTitle}</div>
+        <Button
+            variant="nav"
+            text={itemTitle}
+            onClick={() => changePage(itemTitle)}/>
     )
 }
 
