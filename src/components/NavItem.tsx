@@ -1,13 +1,10 @@
-import {SWContext} from "../utils/context";
-import {useContext} from "react";
+import { SWContext } from "../utils/context";
+import { useContext } from "react";
 import Button from "./ui/Button";
 
-const NavItem = ({itemTitle}: {itemTitle: string}) => {
-    const context = useContext(SWContext);
+const NavItem = ({ itemTitle }: { itemTitle: string }) => {
 
-    if (!context) return null;
-
-    const {setPage} = context;
+    const { setPage } = useContext(SWContext)!;
 
     return (
         <Button
