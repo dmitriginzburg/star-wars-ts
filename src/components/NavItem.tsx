@@ -1,14 +1,20 @@
-import {SWContext} from "../utils/context.ts";
+import {SWContext} from "../utils/context";
 import {useContext} from "react";
-import Button from "./ui/Button.tsx";
+import Button from "./ui/Button";
 
 const NavItem = ({itemTitle}: {itemTitle: string}) => {
-    const {changePage} = useContext(SWContext);
+    const context = useContext(SWContext);
+
+    if (!context) return null;
+
+    const {setPage} = context;
+
     return (
         <Button
             variant="nav"
             text={itemTitle}
-            onClick={() => changePage(itemTitle)}/>
+            onClick={() => setPage(itemTitle)}
+        />
     )
 }
 
