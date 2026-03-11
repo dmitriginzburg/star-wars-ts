@@ -13,31 +13,35 @@ const AboutMe = () => {
     });
 
     useEffect(() => {
+
         if (!(heroId in characters)) {
             return;
         }
-        if (!hero) {
-            fetch(`${characters[heroId as keyof typeof characters].url}`)
-                .then(response => response.json())
-                .then(data => {
-                    const info = {
-                        name: data.name,
-                        gender: data.gender,
-                        birth_year: data.birth_year,
-                        height: data.height,
-                        mass: data.mass,
-                        hair_color: data.hair_color,
-                        skin_color: data.skin_color,
-                        eye_color: data.eye_color
-                    }
-                    setHero(info);
-                    localStorage.setItem(heroId, JSON.stringify({
-                        payload: info,
-                        timestamp: Date.now()
-                    }));
-                })
-        }
-    }, [heroId])
+
+        fetch(`${characters[heroId as keyof typeof characters].url}`)
+            .then(response => response.json())
+            .then(data => {
+
+                const info = {
+                    name: data.name,
+                    gender: data.gender,
+                    birth_year: data.birth_year,
+                    height: data.height,
+                    mass: data.mass,
+                    hair_color: data.hair_color,
+                    skin_color: data.skin_color,
+                    eye_color: data.eye_color
+                }
+
+                setHero(info);
+
+                localStorage.setItem(heroId, JSON.stringify({
+                    payload: info,
+                    timestamp: Date.now()
+                }));
+            });
+
+    }, [heroId]);
 
     return (heroId in characters) ? (
         <>
