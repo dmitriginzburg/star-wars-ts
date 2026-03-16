@@ -8,10 +8,11 @@ export const useValidHero = () => {
     const {heroId = defaultHero} = useParams();
 
     useEffect(() => {
-        if (!(heroId in characters)) {
-            return;
+        if (heroId in characters) {
+            changeHero(heroId);
+        } else {
+            changeHero("error");
         }
-        changeHero(heroId);
     }, [heroId, changeHero]);
 
     return {

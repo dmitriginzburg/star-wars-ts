@@ -62,6 +62,11 @@ export const characters: Record<string, Hero> = {
         name: "Millennium Falcon",
         img: friend7,
         url: `${base_url + version}/transports/10`
+    },
+    error: {
+        name: "Error",
+        img: "",
+        url: ""
     }
 };
 
